@@ -9,9 +9,9 @@
     <script>
         // Function to extract the flag from the page
         function extractFlag() {
-            // Change this to the specific element that contains the flag
-            const flagElement = document.body; // Adjust selector if needed
-
+            // You may need to refine this based on the actual location of the flag in your HTML
+            const flagElement = document.body; // Adjust the selector if needed
+            
             if (flagElement) {
                 const flagText = flagElement.innerText || flagElement.textContent; // Get the text content
                 console.log('Extracted Flag:', flagText); // Log the flag to console
